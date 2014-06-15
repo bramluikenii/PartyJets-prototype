@@ -1,0 +1,55 @@
+# Project: cgl_simple3d
+# Makefile created by Dev-C++ 5.5.3
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = main.o c_mesh.o c_player.o engine.o src/game.o src/level.o src/core.o src/colprim.o src/bullet.o src/effect.o
+LINKOBJ  = main.o c_mesh.o c_player.o engine.o src/game.o src/level.o src/core.o src/colprim.o src/bullet.o src/effect.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib32" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -lcgl -lcore -lglew32s -lopengl32 -luser32 -lgdi32 -lvfw32 -lwinmm   -m32 -g3
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.7.1/include/c++"
+BIN      = cgl_simple3d.exe
+CXXFLAGS = $(CXXINCS) -m32 -g3 -Wno-write-strings
+CFLAGS   = $(INCS) -m32 -g3 -Wno-write-strings
+RM       = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+c_mesh.o: c_mesh.cpp
+	$(CPP) -c c_mesh.cpp -o c_mesh.o $(CXXFLAGS)
+
+c_player.o: c_player.cpp
+	$(CPP) -c c_player.cpp -o c_player.o $(CXXFLAGS)
+
+engine.o: engine.cpp
+	$(CPP) -c engine.cpp -o engine.o $(CXXFLAGS)
+
+src/game.o: src/game.cpp
+	$(CPP) -c src/game.cpp -o src/game.o $(CXXFLAGS)
+
+src/level.o: src/level.cpp
+	$(CPP) -c src/level.cpp -o src/level.o $(CXXFLAGS)
+
+src/core.o: src/core.cpp
+	$(CPP) -c src/core.cpp -o src/core.o $(CXXFLAGS)
+
+src/colprim.o: src/colprim.cpp
+	$(CPP) -c src/colprim.cpp -o src/colprim.o $(CXXFLAGS)
+
+src/bullet.o: src/bullet.cpp
+	$(CPP) -c src/bullet.cpp -o src/bullet.o $(CXXFLAGS)
+
+src/effect.o: src/effect.cpp
+	$(CPP) -c src/effect.cpp -o src/effect.o $(CXXFLAGS)
